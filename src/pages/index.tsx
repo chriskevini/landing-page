@@ -1,8 +1,10 @@
 import gsap from "gsap";
+import ScrollToPlugin from "gsap/dist/ScrollToPlugin";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { ReactElement, useEffect } from "react";
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 function SectionHeading(props: { children: string }) {
   return (
@@ -15,10 +17,7 @@ function SectionHeading(props: { children: string }) {
 
 function HeroMessage(props: { children: string }) {
   return (
-    <h1
-      id="hero-message"
-      className="pt-[40vh] text-[min(12vw,100px)] leading-none"
-    >
+    <h1 className="pt-[40vh] text-[min(12vw,100px)] leading-none">
       {props.children}
     </h1>
   );
@@ -34,26 +33,25 @@ function Padding(props: { children: ReactElement | ReactElement[] }) {
 
 const Home: NextPage = () => {
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.to("#hero-message", {
+    gsap.to("#hero-elements", {
       scrollTrigger: {
-        trigger: "#page-1",
+        trigger: "#hero-section",
+
         start: "top top",
         end: "bottom top",
         scrub: true,
       },
       yPercent: -10,
       opacity: 0.5,
-      duration: 1,
     });
     gsap.to("#hero-section", {
       scrollTrigger: {
-        trigger: "#page-1",
+        trigger: "#hero-section",
         start: "top top",
         end: "bottom top",
         scrub: true,
       },
-      opacity: 1,
+      opacity: 0,
     });
   }, []);
 
@@ -67,23 +65,31 @@ const Home: NextPage = () => {
         />
       </Head>
 
-      <main className="text-[10rem] text-gray-50">
-        <div className=" fixed inset-0 -z-20 h-screen w-full  bg-hero bg-cover bg-left bg-no-repeat ">
-          <Padding>
-            <HeroMessage>UI/UX Design|</HeroMessage>
-          </Padding>
-          <div
-            id="hero-section"
-            className="fixed inset-0 bg-primary opacity-0"
-          ></div>
-        </div>
+      <main className="pointer-events-none bg-primary text-gray-50">
         <div
-          id="page-1"
-          className="h-screen w-screen"
-        ></div>
-        <div className="h-[50vh] w-screen bg-gradient-to-t from-primary"></div>
-        <div className="min-h-screen w-screen bg-primary">
+          id="hero-section"
+          className="fixed h-screen w-screen"
+        >
+          <div className="absolute z-[-99999] h-full w-full bg-hero bg-cover bg-left bg-no-repeat"></div>
           <Padding>
+            <div id="hero-elements">
+              <HeroMessage>UI/UX Design|</HeroMessage>
+              <button
+                onClick={() =>
+                  gsap.to(window, { duration: 2, scrollTo: "#my-work" })
+                }
+                className="pointer-events-auto mt-3 rounded-full bg-secondary py-1 px-5 uppercase text-primary shadow-lg shadow-primary/30"
+              >
+                See My Work
+              </button>
+            </div>
+          </Padding>
+        </div>
+        {/* <div className="h-screen w-screen bg-primary opacity-0"></div>
+        <div className="h-[50vh] w-screen bg-gradient-to-t from-primary"></div> */}
+        <div className="min-h-screen w-screen bg-primary pt-[150vh]">
+          <Padding>
+            <div id="my-work"></div>
             <SectionHeading>My Work</SectionHeading>
           </Padding>
         </div>
