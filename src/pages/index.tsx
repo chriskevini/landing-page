@@ -4,9 +4,10 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { ReactElement, useEffect } from "react";
 
-function SectionHeader(props: { children: string }) {
+function SectionHeading(props: { children: string }) {
   return (
-    <h2 className="text-[min(12vw,120px)] font-thin text-secondary">
+    <h2 className="relative text-[min(12vw,100px)] font-thin text-secondary">
+      <span className="absolute left-[-0.4em] scale-125">{"{"}</span>
       {props.children}
     </h2>
   );
@@ -16,7 +17,7 @@ function HeroMessage(props: { children: string }) {
   return (
     <h1
       id="hero-message"
-      className="pt-[40vh] text-[min(12vw,120px)] leading-none"
+      className="pt-[40vh] text-[min(12vw,100px)] leading-none"
     >
       {props.children}
     </h1>
@@ -83,7 +84,7 @@ const Home: NextPage = () => {
         <div className="h-[50vh] w-screen bg-gradient-to-t from-primary"></div>
         <div className="min-h-screen w-screen bg-primary">
           <Padding>
-            <SectionHeader>My Work</SectionHeader>
+            <SectionHeading>My Work</SectionHeading>
           </Padding>
         </div>
       </main>
