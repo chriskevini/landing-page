@@ -13,6 +13,9 @@ module.exports = {
       fontFamily: {
         logo: "Iceland, system-ui, sans-serif",
       },
+      screens: {
+        sm: "580px",
+      },
     },
   },
   plugins: [],

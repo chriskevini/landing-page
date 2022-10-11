@@ -3,7 +3,7 @@ import ScrollToPlugin from "gsap/dist/ScrollToPlugin";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { ReactElement, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { RiMenuLine } from "react-icons/ri";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -27,7 +27,46 @@ function HeroMessage(props: { children: string }) {
   );
 }
 
+function NavItems() {
+  return (
+    <>
+      <li
+        onClick={() =>
+          gsap.to(window, {
+            duration: 2,
+            scrollTo: { y: "#my-work", offsetY: 100 },
+          })
+        }
+      >
+        My Work
+      </li>
+      <li
+        onClick={() =>
+          gsap.to(window, {
+            duration: 2,
+            scrollTo: { y: "#my-skills", offsetY: 100 },
+          })
+        }
+      >
+        My Skills
+      </li>
+      <li
+        onClick={() =>
+          gsap.to(window, {
+            duration: 2,
+            scrollTo: { y: "#contact-me", offsetY: 100 },
+          })
+        }
+      >
+        Contact Me
+      </li>
+    </>
+  );
+}
+
 const Home: NextPage = () => {
+  const [navMenuIsOpen, setNavMenuIsOpen] = useState(false);
+
   useEffect(() => {
     gsap.to("#hero-elements", {
       scrollTrigger: {
@@ -61,9 +100,9 @@ const Home: NextPage = () => {
         />
       </Head>
 
-      <nav className="fixed top-0 left-0 z-[99999] w-full overflow-hidden brightness-[80%]">
-        <div className="absolute z-[-99999] h-screen w-screen bg-hero bg-cover bg-left-top "></div>
-        <div className="mx-auto flex w-10/12 max-w-3xl justify-between py-4 text-gray-50">
+      <div className="fixed top-0 left-0 z-[4000] w-full overflow-hidden brightness-[80%]">
+        <div className="absolute z-[-4000] h-screen w-screen bg-hero bg-cover bg-left-top "></div>
+        <div className="padding flex justify-between py-4 text-gray-50">
           <button
             onClick={() =>
               gsap.to(window, {
@@ -75,44 +114,29 @@ const Home: NextPage = () => {
           >
             Chris Irineo
           </button>
-
-          <ul className="fixed inset-0 left-[50%] hidden items-center gap-12 text-sm font-extralight sm:flex md:gap-16 [&>*]:uppercase">
-            <li
-              onClick={() =>
-                gsap.to(window, {
-                  duration: 2,
-                  scrollTo: { y: "#my-work", offsetY: 100 },
-                })
-              }
-            >
-              My Work
-            </li>
-            <li
-              onClick={() =>
-                gsap.to(window, {
-                  duration: 2,
-                  scrollTo: { y: "#my-skills", offsetY: 100 },
-                })
-              }
-            >
-              My Skills
-            </li>
-            <li
-              onClick={() =>
-                gsap.to(window, {
-                  duration: 2,
-                  scrollTo: { y: "#contact-me", offsetY: 100 },
-                })
-              }
-            >
-              Contact Me
-            </li>
-          </ul>
-
-          <button className="text-xl sm:hidden">
-            <RiMenuLine />
-          </button>
+          <nav className="hidden sm:block">
+            <ul className="h-full items-center gap-12 text-sm font-extralight sm:flex md:gap-16 [&>*]:cursor-pointer [&>*]:uppercase">
+              <NavItems />
+            </ul>
+          </nav>
         </div>
+      </div>
+      <button
+        onClick={() => setNavMenuIsOpen((prev) => !prev)}
+        className="fixed right-[8.3vw] z-[5001] scale-75 py-4 text-3xl text-gray-50 sm:hidden"
+      >
+        <RiMenuLine />
+      </button>
+      <nav
+        onClick={() => setNavMenuIsOpen(false)}
+        className={
+          "fixed top-0 right-0 z-[5000] block h-screen w-[60vw] bg-black/30 backdrop-blur-md transition-all duration-1000 sm:hidden" +
+          (navMenuIsOpen ? "" : " translate-x-full")
+        }
+      >
+        <ul className="flex list-disc flex-col gap-16 pt-32 pl-12 text-sm font-extralight uppercase text-gray-50 [&>*]:cursor-pointer">
+          <NavItems />
+        </ul>
       </nav>
 
       <main className="pointer-events-none bg-primary text-gray-50">
@@ -120,7 +144,7 @@ const Home: NextPage = () => {
           id="hero-section"
           className="fixed h-screen w-screen"
         >
-          <div className="absolute z-[-99999] h-full w-full bg-hero bg-cover bg-left-top "></div>
+          <div className="absolute z-[-4000] h-full w-full bg-hero bg-cover bg-left-top "></div>
           <div
             id="hero-elements"
             className="padding h-screen"
