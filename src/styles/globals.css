@@ -9,3 +9,9 @@
     font-family: "Fira Sans", system-ui, sans-serif;
   }
 }
+
+@layer components {
+  .padding {
+    @apply mx-auto w-10/12 max-w-3xl py-4;
+  }
+}
