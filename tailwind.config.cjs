@@ -10,6 +10,9 @@ module.exports = {
         primary: "#32232A",
         secondary: "#FF9121",
       },
+      fontFamily: {
+        logo: "Iceland, system-ui, sans-serif",
+      },
     },
   },
   plugins: [],

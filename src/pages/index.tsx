@@ -6,9 +6,12 @@ import Head from "next/head";
 import { ReactElement, useEffect } from "react";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-function SectionHeading(props: { children: string }) {
+function SectionHeading(props: { children: string; id: string }) {
   return (
-    <h2 className="relative text-[min(12vw,100px)] font-thin text-secondary">
+    <h2
+      id={props.id}
+      className="relative text-[min(12vw,100px)] font-thin text-secondary"
+    >
       <span className="absolute left-[-0.4em] scale-125">{"{"}</span>
       {props.children}
     </h2>
@@ -65,32 +68,81 @@ const Home: NextPage = () => {
         />
       </Head>
 
+      <nav className="fixed top-0 left-0 z-[99999] w-full overflow-hidden brightness-[80%]">
+        <div className="absolute z-[-99999] h-screen w-screen bg-hero bg-cover bg-left-top "></div>
+        <div className="mx-auto flex w-10/12 max-w-3xl justify-between py-4 text-gray-50">
+          <button
+            onClick={() =>
+              gsap.to(window, {
+                duration: 2,
+                scrollTo: 0,
+              })
+            }
+            className="font-logo text-3xl leading-none tracking-[-0.095em]"
+          >
+            Chris Irineo
+          </button>
+          <div className="hidden gap-12 text-sm font-extralight sm:flex md:gap-16 [&>*]:uppercase">
+            <button
+              onClick={() =>
+                gsap.to(window, {
+                  duration: 2,
+                  scrollTo: { y: "#my-work", offsetY: 100 },
+                })
+              }
+            >
+              My Work
+            </button>
+            <button
+              onClick={() =>
+                gsap.to(window, {
+                  duration: 2,
+                  scrollTo: { y: "#my-skills", offsetY: 100 },
+                })
+              }
+            >
+              My Skills
+            </button>
+            <button
+              onClick={() =>
+                gsap.to(window, {
+                  duration: 2,
+                  scrollTo: { y: "#contact-me", offsetY: 100 },
+                })
+              }
+            >
+              Contact Me
+            </button>
+          </div>
+        </div>
+      </nav>
+
       <main className="pointer-events-none bg-primary text-gray-50">
         <div
           id="hero-section"
           className="fixed h-screen w-screen"
         >
-          <div className="absolute z-[-99999] h-full w-full bg-hero bg-cover bg-left bg-no-repeat"></div>
+          <div className="absolute z-[-99999] h-full w-full bg-hero bg-cover bg-left-top "></div>
           <Padding>
             <div id="hero-elements">
               <HeroMessage>UI/UX Design|</HeroMessage>
               <button
                 onClick={() =>
-                  gsap.to(window, { duration: 2, scrollTo: "#my-work" })
+                  gsap.to(window, {
+                    duration: 2,
+                    scrollTo: { y: "#my-work", offsetY: 100 },
+                  })
                 }
-                className="pointer-events-auto mt-3 rounded-full bg-secondary py-1 px-5 uppercase text-primary shadow-lg shadow-primary/30"
+                className="pointer-events-auto mt-3 rounded-full bg-secondary py-1 px-5 uppercase text-black shadow-lg shadow-primary/30"
               >
                 See My Work
               </button>
             </div>
           </Padding>
         </div>
-        {/* <div className="h-screen w-screen bg-primary opacity-0"></div>
-        <div className="h-[50vh] w-screen bg-gradient-to-t from-primary"></div> */}
         <div className="min-h-screen w-screen bg-primary pt-[150vh]">
           <Padding>
-            <div id="my-work"></div>
-            <SectionHeading>My Work</SectionHeading>
+            <SectionHeading id="my-work">My Work</SectionHeading>
           </Padding>
         </div>
       </main>
@@ -99,36 +151,3 @@ const Home: NextPage = () => {
 };
 
 export default Home;
-
-//  <TechnologyCard
-//   name="Prisma"
-//   description="Build data-driven JavaScript & TypeScript apps in less time"
-//   documentation="https://www.prisma.io/docs/"
-// />
-
-// type TechnologyCardProps = {
-//   name: string;
-//   description: string;
-//   documentation: string;
-// };
-
-// const TechnologyCard = ({
-//   name,
-//   description,
-//   documentation,
-// }: TechnologyCardProps) => {
-//   return (
-//     <section className="flex flex-col justify-center rounded border-2 border-gray-500 p-6 shadow-xl duration-500 motion-safe:hover:scale-105">
-//       <h2 className="text-lg text-gray-700">{name}</h2>
-//       <p className="text-sm text-gray-600">{description}</p>
-//       <a
-//         className="mt-3 text-sm text-violet-500 underline decoration-dotted underline-offset-2"
-//         href={documentation}
-//         target="_blank"
-//         rel="noreferrer"
-//       >
-//         Documentation
-//       </a>
-//     </section>
-//   );
-// };
