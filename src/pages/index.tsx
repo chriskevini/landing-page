@@ -1,17 +1,19 @@
 import gsap from "gsap";
 import ScrollToPlugin from "gsap/dist/ScrollToPlugin";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { url } from "inspector";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useEffect, useState } from "react";
-import { RiMenuLine, RiCloseLine } from "react-icons/ri";
+import Image from "next/image";
+import { ReactElement, useEffect, useState } from "react";
+import { RiMenuLine, RiCloseLine, RiExternalLinkLine } from "react-icons/ri";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 function SectionHeading(props: { children: string; id: string }) {
   return (
     <h2
       id={props.id}
-      className="relative text-[min(12vw,100px)] font-thin text-secondary"
+      className="relative mb-20 text-[min(12vw,100px)] font-thin text-secondary"
     >
       <span className="absolute left-[-0.4em] scale-125">{"{"}</span>
       {props.children}
@@ -61,6 +63,44 @@ function NavItems() {
         Contact Me
       </li>
     </>
+  );
+}
+
+type ProjectInfoProps = {
+  title: string;
+  description: string | ReactElement;
+  builtWith: string[];
+};
+
+function ProjectInfo({ title, description, builtWith }: ProjectInfoProps) {
+  return (
+    <div className="mb-16 inline-block">
+      <h2 className="mb-5 text-5xl font-black">{title}</h2>
+      <p className="max-w-[26ch]">{description}</p>
+      <button className="pointer-events-auto my-2 flex items-center gap-1 text-xs text-white text-opacity-50">
+        Check it out
+        <RiExternalLinkLine className="" />
+      </button>
+      <span
+        className="mb-1 block w-full text-center font-extralight opacity-80"
+        style={{ fontVariant: "small-caps" }}
+      >
+        Built With
+      </span>
+      <div className="flex justify-center gap-4">
+        {builtWith.map((tech) => (
+          <div key={tech}>
+            <Image
+              src={`/${tech}.png`}
+              alt={tech + " logo"}
+              width={48}
+              height={48}
+              objectFit="contain"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -177,7 +217,29 @@ const Home: NextPage = () => {
         <div className="w-screen bg-primary pt-[150vh]">
           <div className="padding min-h-screen">
             <SectionHeading id="my-work">My Work</SectionHeading>
+            <ProjectInfo
+              title="WordFractal"
+              description={
+                <>
+                  A massively-multiplayer online word-connecting game where
+                  players collaborate and compete to reach the goal.
+                </>
+              }
+              builtWith={["vite", "react", "mui", "firebase"]}
+            />
+            <ProjectInfo
+              title="NCHI Slider"
+              description={
+                <>
+                  A sliding puzzle game inspired by 2048 and NKODICE. Combine
+                  the Hiragana to create <em>naughty</em> words and get the high
+                  score!
+                </>
+              }
+              builtWith={["typescript", "vite", "react", "firebase"]}
+            />
           </div>
+          <div className="placeholder pls-remove h-[100vh]"></div>
         </div>
       </main>
     </>
