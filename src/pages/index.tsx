@@ -4,7 +4,7 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import { RiMenuLine } from "react-icons/ri";
+import { RiMenuLine, RiCloseLine } from "react-icons/ri";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 function SectionHeading(props: { children: string; id: string }) {
@@ -123,9 +123,19 @@ const Home: NextPage = () => {
       </div>
       <button
         onClick={() => setNavMenuIsOpen((prev) => !prev)}
-        className="fixed right-[8.3vw] z-[5001] scale-75 py-4 text-3xl text-gray-50 sm:hidden"
+        className="fixed right-[8.3vw] z-[5001] grid scale-75 place-items-center py-4 text-3xl text-gray-50 sm:hidden"
       >
-        <RiMenuLine />
+        <RiMenuLine
+          className={
+            "transition-all duration-300 " + (navMenuIsOpen ? "scale-0" : "")
+          }
+        />
+        <RiCloseLine
+          className={
+            "absolute transition-all duration-300 " +
+            (!navMenuIsOpen ? "scale-0" : "")
+          }
+        />
       </button>
       <nav
         onClick={() => setNavMenuIsOpen(false)}
@@ -157,7 +167,7 @@ const Home: NextPage = () => {
                   scrollTo: { y: "#my-work", offsetY: 100 },
                 })
               }
-              className="pointer-events-auto mt-3 rounded-full bg-secondary py-1 px-5 uppercase text-black shadow-lg shadow-primary/30"
+              className="pointer-events-auto mt-3  rounded-full bg-secondary py-1 px-5 uppercase text-black shadow-lg shadow-primary/30 hover:brightness-110 active:brightness-90"
             >
               See My Work
             </button>
