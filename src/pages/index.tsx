@@ -76,8 +76,9 @@ const Home: NextPage = () => {
         end: "bottom top",
         scrub: true,
       },
-      yPercent: -10,
+      yPercent: -2,
       opacity: 0.5,
+      scale: 0.95,
     });
     gsap.to("#hero-section", {
       scrollTrigger: {
