@@ -135,7 +135,7 @@ const Home: NextPage = () => {
   }, []);
 
   return (
-    <>
+    <div className="text-stone-100">
       <Head>
         <title>Chris Irineo</title>
         <link
@@ -146,7 +146,7 @@ const Home: NextPage = () => {
 
       <div className="fixed top-0 left-0 z-[4000] w-full overflow-hidden brightness-[80%]">
         <div className="absolute z-[-4000] h-screen w-screen bg-hero bg-cover bg-left-top "></div>
-        <div className="padding flex justify-between py-4 text-gray-50">
+        <div className="padding flex justify-between py-4">
           <button
             onClick={() =>
               gsap.to(window, {
@@ -167,7 +167,7 @@ const Home: NextPage = () => {
       </div>
       <button
         onClick={() => setNavMenuIsOpen((prev) => !prev)}
-        className="fixed right-[8.3vw] z-[5001] grid scale-75 place-items-center py-4 text-3xl text-gray-50 sm:hidden"
+        className="fixed right-[8.3vw] z-[5001] grid scale-75 place-items-center py-4 text-3xl sm:hidden"
       >
         <RiMenuLine
           className={
@@ -188,12 +188,12 @@ const Home: NextPage = () => {
           (navMenuIsOpen ? "" : " translate-x-full")
         }
       >
-        <ul className="flex list-disc flex-col gap-16 pt-32 pl-12 text-sm font-extralight uppercase text-gray-50 [&>*]:cursor-pointer">
+        <ul className="flex list-disc flex-col gap-16 pt-32 pl-12 text-sm font-extralight uppercase [&>*]:cursor-pointer">
           <NavItems />
         </ul>
       </nav>
 
-      <main className="pointer-events-none bg-primary text-gray-50">
+      <main className="pointer-events-none bg-primary">
         <div
           id="hero-section"
           className="fixed h-screen w-screen"
@@ -245,7 +245,7 @@ const Home: NextPage = () => {
           <div className="placeholder pls-remove h-[100vh]"></div>
         </div>
       </main>
-    </>
+    </div>
   );
 };
 
