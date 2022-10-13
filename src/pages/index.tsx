@@ -87,14 +87,17 @@ function ProjectInfo({ title, description, builtWith }: ProjectInfoProps) {
       >
         Built With
       </span>
-      <div className="flex justify-center gap-4">
+      <div className="flex justify-center gap-2">
         {builtWith.map((tech) => (
-          <div key={tech}>
+          <div
+            key={tech}
+            className="grid items-center rounded-md bg-black bg-opacity-10 p-2"
+          >
             <Image
               src={`/${tech}.png`}
               alt={tech + " logo"}
-              width={48}
-              height={48}
+              width={44}
+              height={44}
               objectFit="contain"
             />
           </div>
