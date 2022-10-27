@@ -1,7 +1,6 @@
 import gsap from "gsap";
 import ScrollToPlugin from "gsap/dist/ScrollToPlugin";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import { url } from "inspector";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
@@ -9,11 +8,19 @@ import { ReactElement, useEffect, useState } from "react";
 import { RiMenuLine, RiCloseLine, RiExternalLinkLine } from "react-icons/ri";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/navigation";
+
+import { EffectCoverflow, Navigation } from "swiper";
+
 function SectionHeading(props: { children: string; id: string }) {
   return (
     <h2
       id={props.id}
-      className="relative mb-20 text-[min(12vw,100px)] font-thin text-secondary"
+      className="relative mb-20 text-[min(15vw,100px)] font-thin text-secondary"
     >
       <span className="absolute left-[-0.4em] scale-125">{"{"}</span>
       {props.children}
@@ -74,9 +81,9 @@ type ProjectInfoProps = {
 
 function ProjectInfo({ title, description, builtWith }: ProjectInfoProps) {
   return (
-    <div className="mb-16 inline-block">
+    <div className="z-10 mx-12 mb-16 max-w-[26ch] lg:scale-110">
       <h2 className="mb-5 text-5xl font-black">{title}</h2>
-      <p className="max-w-[26ch]">{description}</p>
+      <p className="">{description}</p>
       <button className="pointer-events-auto my-2 flex items-center gap-1 text-xs text-white text-opacity-50">
         Check it out
         <RiExternalLinkLine className="" />
@@ -91,7 +98,7 @@ function ProjectInfo({ title, description, builtWith }: ProjectInfoProps) {
         {builtWith.map((tech) => (
           <div
             key={tech}
-            className="grid items-center rounded-md bg-black bg-opacity-10 p-2"
+            className="grid items-center rounded-md bg-black bg-opacity-10 p-2 backdrop-blur-lg"
           >
             <Image
               src={`/${tech}.png`}
@@ -104,6 +111,52 @@ function ProjectInfo({ title, description, builtWith }: ProjectInfoProps) {
         ))}
       </div>
     </div>
+  );
+}
+
+type ProjectCarouselProps = {
+  screens: string[];
+};
+
+function ProjectCarousel({ screens }: ProjectCarouselProps) {
+  screens.at = (i) => {
+    while (i < 0) i += screens.length;
+    return screens[i];
+  };
+
+  return (
+    <Swiper
+      effect={"coverflow"}
+      grabCursor={true}
+      centeredSlides={true}
+      slidesPerView={2}
+      loop
+      navigation={true}
+      coverflowEffect={{
+        rotate: 0,
+        stretch: 0,
+        depth: 300,
+        modifier: 1,
+        slideShadows: true,
+      }}
+      modules={[EffectCoverflow, Navigation]}
+      className={
+        "pointer-events-auto !mx-0 w-[150vw] [aspect-ratio:2/2!important] [--swiper-theme-color:white] [--swiper-navigation-size:1.75rem] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_30%,black_70%,transparent_100%)] md:mt-[10%] md:mb-[30%] md:max-h-[50vh] md:w-auto md:scale-150 md:[--swiper-navigation-size:1.25rem]"
+      }
+    >
+      {screens.map((screen, i) => (
+        <SwiperSlide
+          key={i}
+          className="[aspect-ratio:1/2!important]"
+        >
+          <Image
+            src={screen}
+            alt={screen}
+            layout="fill"
+          />
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 }
 
@@ -135,7 +188,7 @@ const Home: NextPage = () => {
   }, []);
 
   return (
-    <div className="text-stone-100">
+    <div className="text-stone-100 ">
       <Head>
         <title>Chris Irineo</title>
         <link
@@ -217,30 +270,48 @@ const Home: NextPage = () => {
             </button>
           </div>
         </div>
-        <div className="w-screen bg-primary pt-[150vh]">
+        <div className="w-screen overflow-hidden bg-primary pt-[150vh]">
           <div className="padding min-h-screen">
             <SectionHeading id="my-work">My Work</SectionHeading>
-            <ProjectInfo
-              title="WordFractal"
-              description={
-                <>
-                  A massively-multiplayer online word-connecting game where
-                  players collaborate and compete to reach the goal.
-                </>
-              }
-              builtWith={["vite", "react", "mui", "firebase"]}
-            />
-            <ProjectInfo
-              title="NCHI Slider"
-              description={
-                <>
-                  A sliding puzzle game inspired by 2048 and NKODICE. Combine
-                  the Hiragana to create <em>naughty</em> words and get the high
-                  score!
-                </>
-              }
-              builtWith={["typescript", "vite", "react", "firebase"]}
-            />
+            <div className="mb-36 flex flex-col items-center justify-between md:flex-row md:justify-center">
+              <ProjectInfo
+                title="Word Fractal"
+                description={
+                  <>
+                    A massively-multiplayer online word-connecting game where
+                    players collaborate and compete to reach the goal.
+                  </>
+                }
+                builtWith={["vite", "react", "mui", "firebase"]}
+              />
+              <ProjectCarousel
+                screens={[
+                  "/word-fractal-1.png",
+                  "/word-fractal-2.png",
+                  "/word-fractal-3.png",
+                ]}
+              />
+            </div>
+            <div className="mb-36 flex flex-col items-center justify-between md:flex-row-reverse md:justify-center">
+              <ProjectInfo
+                title="NCHI Slider"
+                description={
+                  <>
+                    A sliding puzzle game inspired by 2048 and NKODICE. Combine
+                    the Hiragana to create <em>naughty</em> words and get the
+                    high score!
+                  </>
+                }
+                builtWith={["typescript", "vite", "react", "firebase"]}
+              />
+              <ProjectCarousel
+                screens={[
+                  "/nchi-slider-1.jpeg",
+                  "/nchi-slider-2.jpeg",
+                  "/nchi-slider-3.jpeg",
+                ]}
+              />
+            </div>
           </div>
           <div className="placeholder pls-remove h-[100vh]"></div>
         </div>
@@ -250,3 +321,6 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+//TODO: paralax for section headers
+//TODO: add pagination to carousel

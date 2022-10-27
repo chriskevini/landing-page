@@ -13,6 +13,17 @@
 
 @layer components {
   .padding {
-    @apply mx-auto w-10/12 max-w-3xl py-4;
+    @apply mx-auto w-10/12 max-w-5xl py-4;
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  @apply mx-[18%];
+}
+@media (hover: hover) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    @apply transition-all hover:scale-150 hover:text-secondary;
   }
 }
