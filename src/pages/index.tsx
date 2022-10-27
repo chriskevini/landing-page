@@ -141,7 +141,7 @@ function ProjectCarousel({ screens }: ProjectCarouselProps) {
       }}
       modules={[EffectCoverflow, Navigation]}
       className={
-        "pointer-events-auto !mx-0 w-[150vw] [aspect-ratio:2/2!important] [--swiper-theme-color:white] [--swiper-navigation-size:1.75rem] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_30%,black_70%,transparent_100%)] md:mt-[10%] md:mb-[30%] md:max-h-[50vh] md:w-auto md:scale-150 md:[--swiper-navigation-size:1.25rem]"
+        "md pointer-events-auto !mx-0 w-[150vw] [aspect-ratio:2/2!important] [--swiper-theme-color:white] [--swiper-navigation-size:1.75rem] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_30%,black_70%,transparent_100%)] md:mt-[10%] md:mb-[30%] md:w-auto md:scale-150 md:[--swiper-navigation-size:1.25rem] md:portrait:w-full md:landscape:h-[50vh]"
       }
     >
       {screens.map((screen, i) => (
@@ -167,7 +167,6 @@ const Home: NextPage = () => {
     gsap.to("#hero-elements", {
       scrollTrigger: {
         trigger: "#hero-section",
-
         start: "top top",
         end: "bottom top",
         scrub: true,
