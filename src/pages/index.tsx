@@ -14,7 +14,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 
-import { EffectCoverflow, Navigation } from "swiper";
+import { EffectCoverflow, Navigation, Autoplay } from "swiper";
 
 function SectionHeading(props: { children: string; id: string }) {
   return (
@@ -140,7 +140,12 @@ function ProjectCarousel({ screens }: ProjectCarouselProps) {
           modifier: 1,
           slideShadows: true,
         }}
-        modules={[EffectCoverflow, Navigation]}
+        autoplay={{
+          delay: 4000,
+          pauseOnMouseEnter: true,
+          disableOnInteraction: false,
+        }}
+        modules={[EffectCoverflow, Navigation, Autoplay]}
         className={
           "pointer-events-auto !mx-0 !my-0 w-[150vw] [aspect-ratio:2/2!important] [--swiper-theme-color:white] [--swiper-navigation-size:1.75rem] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_30%,black_70%,transparent_100%)] " +
           "md:portrait:full md:mt-[10%] md:mb-[30%] md:w-auto md:[--swiper-navigation-size:1.25rem] md:landscape:h-[50vh]"
