@@ -5,6 +5,9 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { RiMenuLine, RiCloseLine } from "react-icons/ri";
+import { FaDraftingCompass, FaServer } from "react-icons/fa";
+import { MdOutlineDevices } from "react-icons/md";
+import { IoLogoGameControllerB } from "react-icons/io";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 import { Section } from "../components/Section";
@@ -12,6 +15,7 @@ import { HeroMessage } from "../components/HeroMessage";
 import { NavItems } from "../components/NavItems";
 import { ProjectInfo } from "../components/ProjectInfo";
 import { ProjectCarousel } from "../components/ProjectCarousel";
+import Skill from "../components/Skill";
 
 const Home: NextPage = () => {
   const [navMenuIsOpen, setNavMenuIsOpen] = useState(false);
@@ -176,7 +180,68 @@ const Home: NextPage = () => {
           altColor
           background="bg-gradient-to-br from-secondary/70 via-secondary/20"
         >
-          <div className="h-screen"></div>
+          <div className="flex flex-wrap justify-center gap-12">
+            <Skill
+              title="UI/UX Design"
+              details={
+                <ul>
+                  <li>Mobile-First</li>
+                  <li>Design Tools</li>
+                  <ul>
+                    <li>Figma</li>
+                  </ul>
+                  <li>Style Systems</li>
+                  <ul>
+                    <li>Material</li>
+                    <li>iOS</li>
+                  </ul>
+                </ul>
+              }
+              glyph={<FaDraftingCompass className="scale-90" />}
+            />
+            <Skill
+              title="Front-End Development"
+              details={
+                <ul>
+                  <li>React</li>
+                  <li>Typescript</li>
+                  <li>Next.js</li>
+                  <li>Tailwind CSS</li>
+                  <li>Vite</li>
+                </ul>
+              }
+              glyph={<MdOutlineDevices />}
+            />
+            <Skill
+              title="Back-End Development"
+              details={
+                <ul>
+                  <li>Node.js</li>
+                  <li>Typescript</li>
+                  <li>Databases</li>
+                  <ul>
+                    <li>Firebase</li>
+                    <li>Mongo</li>
+                    <li>MySQL</li>
+                  </ul>
+                </ul>
+              }
+              glyph={<FaServer />}
+            />
+            <Skill
+              title="Game Development"
+              details={
+                <ul>
+                  <li>Game Design</li>
+                  <li>Prototyping</li>
+                  <li>Testing</li>
+                  <li>Multi-platform</li>
+                </ul>
+              }
+              glyph={<IoLogoGameControllerB className="scale-110" />}
+            />
+          </div>
+          <div className="h-32"></div>
         </Section>
         <div className="placeholder pls-remove h-[100vh]"></div>
       </main>
