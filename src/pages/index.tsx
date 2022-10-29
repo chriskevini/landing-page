@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { RiMenuLine, RiCloseLine } from "react-icons/ri";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-import { SectionHeading } from "../components/SectionHeading";
+import { Section } from "../components/Section";
 import { HeroMessage } from "../components/HeroMessage";
 import { NavItems } from "../components/NavItems";
 import { ProjectInfo } from "../components/ProjectInfo";
@@ -40,7 +40,7 @@ const Home: NextPage = () => {
   }, []);
 
   return (
-    <div className="text-stone-100 ">
+    <div className="overflow-hidden text-stone-100">
       <Head>
         <title>Chris Irineo</title>
         <link
@@ -122,51 +122,63 @@ const Home: NextPage = () => {
             </button>
           </div>
         </div>
-        <div className="w-screen overflow-hidden bg-primary pt-[150vh]">
-          <div className="padding min-h-screen">
-            <SectionHeading id="my-work">My Work</SectionHeading>
-            <div className="mb-36 flex flex-col items-center justify-between md:flex-row md:justify-center">
-              <ProjectInfo
-                title="Word Fractal"
-                description={
-                  <>
-                    A massively-multiplayer online word-connecting game where
-                    players collaborate and compete to reach the goal.
-                  </>
-                }
-                builtWith={["vite", "react", "mui", "firebase"]}
-              />
-              <ProjectCarousel
-                screens={[
-                  "/word-fractal-1.png",
-                  "/word-fractal-2.png",
-                  "/word-fractal-3.png",
-                ]}
-              />
-            </div>
-            <div className="mb-36 flex flex-col items-center justify-between md:flex-row-reverse md:justify-center">
-              <ProjectInfo
-                title="NCHI Slider"
-                description={
-                  <>
-                    A sliding puzzle game inspired by 2048 and NKODICE. Combine
-                    the Hiragana to create <em>naughty</em> words and get the
-                    high score!
-                  </>
-                }
-                builtWith={["typescript", "vite", "react", "firebase"]}
-              />
-              <ProjectCarousel
-                screens={[
-                  "/nchi-slider-1.jpeg",
-                  "/nchi-slider-2.jpeg",
-                  "/nchi-slider-3.jpeg",
-                ]}
-              />
-            </div>
+
+        <div className="h-[125vh]"></div>
+
+        <Section
+          id="my-work"
+          heading="My Work"
+        >
+          <div className="mb-36 flex flex-col items-center justify-between md:flex-row md:justify-center">
+            <ProjectInfo
+              title="Word Fractal"
+              description={
+                <>
+                  A massively-multiplayer online word-connecting game where
+                  players collaborate and compete to reach the goal.
+                </>
+              }
+              builtWith={["vite", "react", "mui", "firebase"]}
+            />
+            <ProjectCarousel
+              screens={[
+                "/word-fractal-1.png",
+                "/word-fractal-2.png",
+                "/word-fractal-3.png",
+              ]}
+            />
           </div>
-          <div className="placeholder pls-remove h-[100vh]"></div>
-        </div>
+          <div className="mb-36 flex flex-col items-center justify-between md:flex-row-reverse md:justify-center">
+            <ProjectInfo
+              title="NCHI Slider"
+              description={
+                <>
+                  A sliding puzzle game inspired by 2048 and NKODICE. Combine
+                  the Hiragana to create <em>naughty</em> words and get the high
+                  score!
+                </>
+              }
+              builtWith={["typescript", "vite", "react", "firebase"]}
+            />
+            <ProjectCarousel
+              screens={[
+                "/nchi-slider-1.jpeg",
+                "/nchi-slider-2.jpeg",
+                "/nchi-slider-3.jpeg",
+              ]}
+            />
+          </div>
+        </Section>
+
+        <Section
+          id="my-skills"
+          heading="My Skills"
+          altColor
+          background="bg-gradient-to-br from-secondary/70 via-secondary/20"
+        >
+          <div className="h-screen"></div>
+        </Section>
+        <div className="placeholder pls-remove h-[100vh]"></div>
       </main>
     </div>
   );
@@ -177,3 +189,4 @@ export default Home;
 //TODO: fix carousel on large portrait viewport
 //TODO: add pagination to carousel
 //TODO: fix blurry screens on carousel caused by scaling
+//TODO: move header to own file
