@@ -3,7 +3,7 @@ import ScrollToPlugin from "gsap/dist/ScrollToPlugin";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { FaDraftingCompass, FaServer } from "react-icons/fa";
 import { MdOutlineDevices } from "react-icons/md";
 import { IoLogoGameControllerB } from "react-icons/io";
@@ -15,10 +15,9 @@ import { ProjectInfo } from "../components/ProjectInfo";
 import { ProjectCarousel } from "../components/ProjectCarousel";
 import Skill from "../components/Skill";
 import { Header } from "../components/Header";
+import ContactForm from "../components/ContactForm";
 
 const Home: NextPage = () => {
-  const [navMenuIsOpen, setNavMenuIsOpen] = useState(false);
-
   useEffect(() => {
     gsap.to("#hero-elements", {
       scrollTrigger: {
@@ -28,7 +27,7 @@ const Home: NextPage = () => {
         scrub: true,
       },
       yPercent: -2,
-      opacity: 0.5,
+      opacity: 0,
       scale: 0.95,
     });
     gsap.to("#hero-section", {
@@ -53,7 +52,7 @@ const Home: NextPage = () => {
       </Head>
       <Header />
 
-      <main className="pointer-events-none bg-primary">
+      <main className="pointer-events-none relative bg-primary">
         <div
           id="hero-section"
           className="fixed h-screen w-screen"
@@ -68,10 +67,13 @@ const Home: NextPage = () => {
               onClick={() =>
                 gsap.to(window, {
                   duration: 2,
-                  scrollTo: { y: "#my-work", offsetY: 100 },
+                  scrollTo: {
+                    y: "#my-work",
+                    offsetY: 100,
+                  },
                 })
               }
-              className="pointer-events-auto mt-3  rounded-full bg-secondary py-1 px-5 uppercase text-black shadow-lg shadow-primary/30 hover:brightness-110 active:brightness-90"
+              className="filled-button rounded-full"
             >
               See My Work
             </button>
@@ -194,7 +196,21 @@ const Home: NextPage = () => {
           </div>
           <div className="h-32"></div>
         </Section>
-        <div className="placeholder pls-remove h-[100vh]"></div>
+
+        <div className="w-screen bg-hero bg-cover">
+          <Section
+            id="contact-me"
+            heading="Contact Me"
+          >
+            <p className="my-16 whitespace-pre-wrap">
+              {`I'm open to exploring new oportunities.\n` +
+                `Let's build something awesome!`}
+            </p>
+            <ContactForm />
+          </Section>
+          <div className="placeholder pls-remove h-[50vh]"></div>
+          <div className="">Footer</div>
+        </div>
       </main>
     </div>
   );
@@ -205,3 +221,4 @@ export default Home;
 //TODO: fix carousel on large portrait viewport
 //TODO: add pagination to carousel
 //TODO: fix blurry screens on carousel caused by scaling
+//TOOD: disable invisible 'see my work' button
