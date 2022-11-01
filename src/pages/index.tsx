@@ -30,6 +30,15 @@ const Home: NextPage = () => {
       opacity: 0,
       scale: 0.95,
     });
+    gsap.to("#hero-elements", {
+      scrollTrigger: {
+        trigger: "#my-work",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+      scale: 0,
+    });
     gsap.to("#hero-section", {
       scrollTrigger: {
         trigger: "#hero-section",
@@ -221,4 +230,3 @@ export default Home;
 //TODO: fix carousel on large portrait viewport
 //TODO: add pagination to carousel
 //TODO: fix blurry screens on carousel caused by scaling
-//TOOD: disable invisible 'see my work' button
