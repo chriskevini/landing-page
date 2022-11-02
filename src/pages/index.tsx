@@ -16,6 +16,7 @@ import { ProjectCarousel } from "../components/ProjectCarousel";
 import Skill from "../components/Skill";
 import { Header } from "../components/Header";
 import ContactForm from "../components/ContactForm";
+import Footer from "../components/Footer";
 
 const Home: NextPage = () => {
   useEffect(() => {
@@ -217,8 +218,8 @@ const Home: NextPage = () => {
             </p>
             <ContactForm />
           </Section>
-          <div className="placeholder pls-remove h-[50vh]"></div>
-          <div className="">Footer</div>
+          <div className="h-[40vh]"></div>
+          <Footer />
         </div>
       </main>
     </div>
