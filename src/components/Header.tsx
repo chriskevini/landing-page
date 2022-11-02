@@ -48,7 +48,7 @@ export function Header() {
       <nav
         onClick={() => setNavMenuIsOpen(false)}
         className={
-          "fixed top-0 right-0 z-[5000] block h-screen w-[60vw] bg-black/30 backdrop-blur-md transition-all duration-1000 sm:hidden" +
+          "fixed top-0 right-0 z-40 block h-screen w-[60vw] bg-black/30 backdrop-blur-md transition-all duration-1000 sm:hidden" +
           (navMenuIsOpen ? "" : " translate-x-full")
         }
       >
@@ -56,6 +56,12 @@ export function Header() {
           <NavItems />
         </ul>
       </nav>
+      {navMenuIsOpen ? (
+        <div
+          onClick={() => setNavMenuIsOpen(false)}
+          className="fixed inset-0 z-10"
+        ></div>
+      ) : null}
     </div>
   );
 }
