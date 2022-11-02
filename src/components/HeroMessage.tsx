@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 
-export function HeroMessage() {
+export function HeroMessage(props: {
+  setIsHeroMessageDone: Dispatch<SetStateAction<boolean>>;
+}) {
   const line1 = "Hi! I'm Chris.";
   const line2 = "I do...";
   const spacer = "　";
@@ -12,7 +14,14 @@ export function HeroMessage() {
       {state === "line1" ? (
         <>
           <TypeAnimation
-            sequence={["", 2000, line1, () => setState("line2")]}
+            sequence={[
+              "",
+              1000,
+              "Hi! :)",
+              1250,
+              line1,
+              () => setState("line2"),
+            ]}
           />
           <div>{spacer}</div>
           <div>{spacer}</div>
@@ -43,6 +52,7 @@ export function HeroMessage() {
               1500,
               line3[3] || "",
               1500,
+              () => props.setIsHeroMessageDone(true),
             ]}
             wrapper="div"
             repeat={Infinity}

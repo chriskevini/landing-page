@@ -3,7 +3,7 @@ import ScrollToPlugin from "gsap/dist/ScrollToPlugin";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FaDraftingCompass, FaServer } from "react-icons/fa";
 import { MdOutlineDevices } from "react-icons/md";
 import { IoLogoGameControllerB } from "react-icons/io";
@@ -19,6 +19,8 @@ import ContactForm from "../components/ContactForm";
 import Footer from "../components/Footer";
 
 const Home: NextPage = () => {
+  const [isHeroMessageDone, setIsHeroMessageDone] = useState(false);
+
   useEffect(() => {
     gsap.to("#hero-elements", {
       scrollTrigger: {
@@ -72,7 +74,7 @@ const Home: NextPage = () => {
             id="hero-elements"
             className="padding h-screen"
           >
-            <HeroMessage />
+            <HeroMessage {...{ setIsHeroMessageDone }} />
             <button
               onClick={() =>
                 gsap.to(window, {
@@ -83,7 +85,10 @@ const Home: NextPage = () => {
                   },
                 })
               }
-              className="filled-button rounded-full"
+              className={
+                "filled-button animate-bounce rounded-full opacity-0 transition-opacity duration-500 " +
+                (isHeroMessageDone ? "opacity-100" : "")
+              }
             >
               See My Work
             </button>
