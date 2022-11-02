@@ -72,7 +72,7 @@ const Home: NextPage = () => {
             id="hero-elements"
             className="padding h-screen"
           >
-            <HeroMessage>UI/UX Design|</HeroMessage>
+            <HeroMessage />
             <button
               onClick={() =>
                 gsap.to(window, {
