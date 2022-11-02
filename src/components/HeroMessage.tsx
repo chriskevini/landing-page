@@ -6,7 +6,6 @@ export function HeroMessage(props: {
 }) {
   const line1 = "Hi! I'm Chris.";
   const line2 = "I do...";
-  const spacer = "　";
   const line3 = ["UI/UX Design", "Front-End Dev", "Back-End Dev", "Game Dev"];
   const [state, setState] = useState("line1");
   return (
@@ -23,8 +22,6 @@ export function HeroMessage(props: {
               () => setState("line2"),
             ]}
           />
-          <div>{spacer}</div>
-          <div>{spacer}</div>
         </>
       ) : null}
       {state === "line2" ? (
@@ -33,7 +30,6 @@ export function HeroMessage(props: {
           <TypeAnimation
             sequence={["", 1000, line2, 500, () => setState("line3")]}
           />
-          <div>{spacer}</div>
         </>
       ) : null}
       {state === "line3" ? (
