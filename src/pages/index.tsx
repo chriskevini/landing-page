@@ -110,6 +110,7 @@ const Home: NextPage = () => {
                   players collaborate and compete to reach the goal.
                 </>
               }
+              link="https://word-fractal.web.app"
               builtWith={["vite", "react", "mui", "firebase"]}
             />
             <ProjectCarousel
@@ -130,6 +131,7 @@ const Home: NextPage = () => {
                   score!
                 </>
               }
+              link="https://nchislider.web.app/"
               builtWith={["typescript", "vite", "react", "firebase"]}
             />
             <ProjectCarousel

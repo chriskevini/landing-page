@@ -5,21 +5,26 @@ import { RiExternalLinkLine } from "react-icons/ri";
 type ProjectInfoProps = {
   title: string;
   description: string | ReactElement;
+  link: string;
   builtWith: string[];
 };
 export function ProjectInfo({
   title,
   description,
+  link,
   builtWith,
 }: ProjectInfoProps) {
   return (
     <div className="z-10 mx-12 mb-16 max-w-[26ch] lg:scale-110">
       <h2 className="mb-5 text-5xl font-black">{title}</h2>
       <p className="">{description}</p>
-      <button className="pointer-events-auto my-2 flex items-center gap-1 text-xs text-white text-opacity-50">
+      <a
+        href={link}
+        className="pointer-events-auto my-2 flex items-center gap-1 text-xs text-white text-opacity-50"
+      >
         Check it out
-        <RiExternalLinkLine className="" />
-      </button>
+        <RiExternalLinkLine />
+      </a>
       <span
         className="mb-1 block w-full text-center font-extralight opacity-80"
         style={{ fontVariant: "small-caps" }}
