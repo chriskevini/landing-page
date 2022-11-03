@@ -219,10 +219,6 @@ const Home: NextPage = () => {
             id="contact-me"
             heading="Contact Me"
           >
-            <p className="my-16 whitespace-pre-wrap">
-              {`I'm open to exploring new oportunities.\n` +
-                `Let's build something awesome!`}
-            </p>
             <ContactForm />
           </Section>
           <div className="h-[40vh]"></div>

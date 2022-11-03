@@ -27,6 +27,17 @@ module.exports = {
             "animation-timing-function": "cubic-bezier(0.8,0,1,1)",
           },
         },
+        "scale-y-in": {
+          "0%": {
+            scale: "1.0 0",
+          },
+          "100%": {
+            scale: "1.0 1.0",
+          },
+        },
+      },
+      animation: {
+        "scale-y-in": "scale-y-in 1000ms linear",
       },
     },
   },
