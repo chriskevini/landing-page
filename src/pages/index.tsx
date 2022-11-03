@@ -30,17 +30,8 @@ const Home: NextPage = () => {
         scrub: true,
       },
       yPercent: -2,
-      opacity: 0,
+      autoAlpha: 0,
       scale: 0.95,
-    });
-    gsap.to("#hero-elements", {
-      scrollTrigger: {
-        trigger: "#my-work",
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-      },
-      scale: 0,
     });
     gsap.to("#hero-section", {
       scrollTrigger: {
@@ -49,7 +40,7 @@ const Home: NextPage = () => {
         end: "bottom top",
         scrub: true,
       },
-      opacity: 0,
+      autoAlpha: 0,
     });
 
     document
