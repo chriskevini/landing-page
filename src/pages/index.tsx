@@ -51,6 +51,12 @@ const Home: NextPage = () => {
       },
       opacity: 0,
     });
+
+    document
+      .querySelectorAll(".section-heading")
+      .forEach((section) =>
+        gsap.fromTo(section, { x: 100 }, { scrollTrigger: section, x: 0 })
+      );
   }, []);
 
   return (

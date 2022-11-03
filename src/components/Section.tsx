@@ -11,7 +11,7 @@ export function Section(props: {
         <h2
           id={props.id}
           className={
-            "relative my-20 text-[min(15vw,100px)] font-thin " +
+            "section-heading relative my-20 text-[min(15vw,100px)] font-thin " +
             (props.altColor ? "text-primary" : "text-secondary")
           }
         >
