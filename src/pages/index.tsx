@@ -98,7 +98,7 @@ const Home: NextPage = () => {
           id="my-work"
           heading="My Work"
         >
-          <div className="mb-36 flex flex-col items-center justify-between md:flex-row md:justify-center">
+          <div className="mb-36 flex flex-col items-center gap-12 md:flex-row md:justify-evenly md:gap-0">
             <ProjectInfo
               title="Word Fractal"
               description={
@@ -118,7 +118,7 @@ const Home: NextPage = () => {
               ]}
             />
           </div>
-          <div className="mb-36 flex flex-col items-center justify-between md:flex-row-reverse md:justify-center">
+          <div className="mb-36 flex flex-col items-center gap-12 md:flex-row-reverse md:justify-evenly md:gap-0">
             <ProjectInfo
               title="NCHI Slider"
               description={
@@ -228,6 +228,5 @@ const Home: NextPage = () => {
 
 export default Home;
 
-//TODO: fix carousel on large portrait viewport
 //TODO: add pagination to carousel
-//TODO: fix blurry screens on carousel caused by scaling
+//TODO: deploy

@@ -22,7 +22,7 @@
 
 .swiper-button-prev,
 .swiper-button-next {
-  @apply mx-[18%];
+  @apply mx-[16%] md:mx-[14%];
 }
 @media (hover: hover) {
   .swiper-button-prev,

@@ -15,7 +15,7 @@ export function ProjectInfo({
   builtWith,
 }: ProjectInfoProps) {
   return (
-    <div className="z-10 mx-12 mb-16 max-w-[26ch] lg:scale-110">
+    <div className="z-10 max-w-[26ch] flex-shrink-0 lg:scale-110">
       <h2 className="mb-5 text-5xl font-black">{title}</h2>
       <p className="">{description}</p>
       <a
