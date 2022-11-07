@@ -1,4 +1,4 @@
-export function Section(props: {
+export default function Section(props: {
   heading: string;
   id: string;
   children: JSX.Element[] | JSX.Element;

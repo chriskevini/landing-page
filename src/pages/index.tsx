@@ -5,26 +5,26 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { FaDraftingCompass, FaServer } from "react-icons/fa";
-import { MdOutlineDevices } from "react-icons/md";
 import { IoLogoGameControllerB } from "react-icons/io";
+import { MdOutlineDevices } from "react-icons/md";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-import { Section } from "../components/Section";
-import { HeroMessage } from "../components/HeroMessage";
-import { ProjectInfo } from "../components/ProjectInfo";
-import { ProjectCarousel } from "../components/ProjectCarousel";
-import Skill from "../components/Skill";
-import { Header } from "../components/Header";
 import ContactForm from "../components/ContactForm";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
+import HeroImage from "../components/HeroImage";
+import HeroMessage from "../components/HeroMessage";
+import ProjectCarousel from "../components/ProjectCarousel";
+import ProjectInfo from "../components/ProjectInfo";
+import Section from "../components/Section";
+import Skill from "../components/Skill";
 
-import wordFractal1 from "../../public/word-fractal-1.png";
-import wordFractal2 from "../../public/word-fractal-2.png";
-import wordFractal3 from "../../public/word-fractal-3.png";
 import nchiSlider1 from "../../public/nchi-slider-1.jpeg";
 import nchiSlider2 from "../../public/nchi-slider-2.jpeg";
 import nchiSlider3 from "../../public/nchi-slider-3.jpeg";
-import { HeroImage } from "./HeroImage";
+import wordFractal1 from "../../public/word-fractal-1.png";
+import wordFractal2 from "../../public/word-fractal-2.png";
+import wordFractal3 from "../../public/word-fractal-3.png";
 
 const Home: NextPage = () => {
   const [isHeroMessageDone, setIsHeroMessageDone] = useState(false);

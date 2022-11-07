@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 
-export function HeroMessage(props: {
+export default function HeroMessage(props: {
   setIsHeroMessageDone: Dispatch<SetStateAction<boolean>>;
 }) {
   const line1 = "Hi! I'm Chris.";

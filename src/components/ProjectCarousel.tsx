@@ -9,7 +9,7 @@ import "swiper/css/navigation";
 type ProjectCarouselProps = {
   screens: StaticImageData[];
 };
-export function ProjectCarousel({ screens }: ProjectCarouselProps) {
+export default function ProjectCarousel({ screens }: ProjectCarouselProps) {
   screens.at = (i) => {
     while (i < 0) i += screens.length;
     return screens[i];

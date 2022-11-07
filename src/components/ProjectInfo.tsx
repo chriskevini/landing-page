@@ -8,7 +8,7 @@ type ProjectInfoProps = {
   link: string;
   builtWith: string[];
 };
-export function ProjectInfo({
+export default function ProjectInfo({
   title,
   description,
   link,

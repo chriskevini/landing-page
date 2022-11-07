@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export function HeroImage(props: { priority?: boolean }) {
+export default function HeroImage(props: { priority?: boolean }) {
   return (
     <Image
       src="/maple-leaves-blur.jpeg"

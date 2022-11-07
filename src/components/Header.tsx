@@ -3,7 +3,7 @@ import { useState } from "react";
 import { RiMenuLine, RiCloseLine } from "react-icons/ri";
 import { NavItems } from "./NavItems";
 
-export function Header() {
+export default function Header() {
   const [navMenuIsOpen, setNavMenuIsOpen] = useState(false);
 
   return (
