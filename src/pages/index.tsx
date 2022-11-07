@@ -18,6 +18,14 @@ import { Header } from "../components/Header";
 import ContactForm from "../components/ContactForm";
 import Footer from "../components/Footer";
 
+import wordFractal1 from "../../public/word-fractal-1.png";
+import wordFractal2 from "../../public/word-fractal-2.png";
+import wordFractal3 from "../../public/word-fractal-3.png";
+import nchiSlider1 from "../../public/nchi-slider-1.jpeg";
+import nchiSlider2 from "../../public/nchi-slider-2.jpeg";
+import nchiSlider3 from "../../public/nchi-slider-3.jpeg";
+import { HeroImage } from "./HeroImage";
+
 const Home: NextPage = () => {
   const [isHeroMessageDone, setIsHeroMessageDone] = useState(false);
 
@@ -66,7 +74,8 @@ const Home: NextPage = () => {
           id="hero-section"
           className="fixed h-screen w-screen"
         >
-          <div className="absolute z-[-4000] h-full w-full bg-hero bg-cover bg-left-top "></div>
+          <HeroImage priority />
+
           <div
             id="hero-elements"
             className="padding h-screen"
@@ -111,11 +120,7 @@ const Home: NextPage = () => {
               builtWith={["vite", "react", "mui", "firebase"]}
             />
             <ProjectCarousel
-              screens={[
-                "/word-fractal-1.png",
-                "/word-fractal-2.png",
-                "/word-fractal-3.png",
-              ]}
+              screens={[wordFractal1, wordFractal2, wordFractal3]}
             />
           </div>
           <div className="mb-36 flex flex-col items-center gap-12 md:flex-row-reverse md:justify-evenly md:gap-0">
@@ -132,11 +137,7 @@ const Home: NextPage = () => {
               builtWith={["typescript", "vite", "react", "firebase"]}
             />
             <ProjectCarousel
-              screens={[
-                "/nchi-slider-1.jpeg",
-                "/nchi-slider-2.jpeg",
-                "/nchi-slider-3.jpeg",
-              ]}
+              screens={[nchiSlider1, nchiSlider2, nchiSlider3]}
             />
           </div>
         </Section>
@@ -211,7 +212,7 @@ const Home: NextPage = () => {
           <div className="h-32"></div>
         </Section>
 
-        <div className="w-screen bg-hero bg-cover">
+        <div className="relative z-0">
           <Section
             id="contact-me"
             heading="Contact Me"
@@ -220,6 +221,7 @@ const Home: NextPage = () => {
           </Section>
           <div className="h-[40vh]"></div>
           <Footer />
+          <HeroImage />
         </div>
       </main>
     </div>

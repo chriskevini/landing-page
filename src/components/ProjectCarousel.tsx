@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Navigation, Autoplay } from "swiper";
 
@@ -7,7 +7,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 
 type ProjectCarouselProps = {
-  screens: string[];
+  screens: StaticImageData[];
 };
 export function ProjectCarousel({ screens }: ProjectCarouselProps) {
   screens.at = (i) => {
@@ -50,8 +50,10 @@ export function ProjectCarousel({ screens }: ProjectCarouselProps) {
           >
             <Image
               src={screen}
-              alt={screen}
+              alt="project image"
               layout="fill"
+              sizes="(max-width: 767px) 100vw, 20vw"
+              placeholder="blur"
             />
           </SwiperSlide>
         ))}
