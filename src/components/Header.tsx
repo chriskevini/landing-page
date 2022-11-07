@@ -8,8 +8,7 @@ export function Header() {
 
   return (
     <div>
-      <div className="fixed top-0 left-0 z-[4000] w-full overflow-hidden brightness-[80%]">
-        <div className="absolute z-[-4000] h-screen w-screen bg-hero bg-cover bg-left-top "></div>
+      <div className="fixed top-0 left-0 z-[4000] w-full border-b border-stone-100/20 backdrop-blur-md">
         <div className="padding flex justify-between py-4">
           <button
             onClick={() =>
