@@ -8,7 +8,7 @@ function Footer() {
         <a href="https://twitter.com/chriskevini">
           <FaTwitter />
         </a>
-        <a href="https://ca.linkedin.com/in/chris-kevin-irineo-522480169">
+        <a href="https://www.linkedin.com/in/chris-irineo">
           <FaLinkedin />
         </a>
         <a href="https://github.com/chriskevini">
